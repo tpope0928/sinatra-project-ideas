@@ -1,0 +1,8 @@
+All Project Ideas
+<% @project_entries.each do |project_idea| %>
+  <h4><a href="/project_ideas/<%= project_idea.id %>"><%= project_idea.created_at %></a></h4>
+  <strong><%= project_idea.title %></strong>
+  <p><%= project_idea.content %></p>
+  <p>By <%= project_idea.user.name %></p>
+  <br><br>
+<% end %>

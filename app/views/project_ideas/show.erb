@@ -1,0 +1,16 @@
+<h3><%= @project_idea.title %></h3>
+<p><%= @project_idea.coproject_idea
+
+<p>Created by: <%= @project_idea.user.name %></p>
+
+<p>created on <%= @project_idea.formatted_created_at %></p>
+
+
+<% if authorized_to_edit?(@project_idea) %>
+  <a href="/project_ideas/<%= @project_idea.id %>/edit">Edit Idea</a>
+  <br><br>
+  <form class="" action="/project_ideas/<%= @project_idea.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this project idea">
+  </form>
+<% end %>

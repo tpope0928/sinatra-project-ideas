@@ -1,0 +1,10 @@
+Edit a Project Idea
+
+<form class="" action="/project_ideas/<%= @project_idea.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="title">Title:</label>
+  <input type="text" name="title" value ="<%= @project_idea.title %>">
+  <label for="content">Content:</label>
+  <textarea name="content" style="width:auto; height:auto;"><%= @project_idea.content %></textarea>
+  <input type="submit" name="" value="Edit Entry">
+</form>
