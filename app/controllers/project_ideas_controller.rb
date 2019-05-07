@@ -13,13 +13,17 @@ class ProjectIdeasController < ApplicationController
   post '/project_ideas' do
     redirect_if_not_logged_in
     if params[:content] != ""
-      @project_idea = ProjectIdea.create(content: params[:content], user_id: current_user.id, title: params[:title])
+      @project_idea = ProjectIdea.create(content: params[:content], user_id: current_user.id, title: params[:title], claimed: params[:claimed])
       flash[:message] = "Project idea successfully created." if @project_idea.id
       redirect "/project_ideas/#{@project_idea.id}"
     else
       flash[:errors] = "Something went wrong - you must provide content for your idea."
       redirect '/project_ideas/new'
     end
+    #if params claimed = true then add to show page
+    #elsif params claimed != true (unclaimed) then add to all project ideas
+    #else flash[:errors] = "Something went wrong - Would you like to claim this project?"
+    #redirect '/project_ideas/new'
   end
 
   get '/project_ideas/:id' do
