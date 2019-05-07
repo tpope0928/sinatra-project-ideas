@@ -59,9 +59,24 @@ class ProjectIdeasController < ApplicationController
     end
   end
 
+  get '/project_ideas/show' do
+    redirect_if_not_logged_in
+    #code on show page needs to show claimed project
+    erb :'/project_ideas/show'
+  end
+
   private
 
   def set_project_idea
     @project_idea = ProjectIdea.find(params[:id])
   end
+
+  def claimed_idea
+
+  end
+
+  def unclaimed_idea
+
+  end
+
 end
