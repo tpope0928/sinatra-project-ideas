@@ -71,11 +71,11 @@ class ProjectIdeasController < ApplicationController
     @project_idea = ProjectIdea.find(params[:id])
   end
 
-  def claimed_idea
+  def claimed_project
 
   end
 
-  def unclaimed_idea
+  def unclaimed_project
 
   end
 
