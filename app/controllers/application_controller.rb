@@ -42,6 +42,8 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    #add helper so users cannot have more than one claimed idea
+
   end
 
 end
