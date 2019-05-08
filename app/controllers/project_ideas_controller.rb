@@ -21,6 +21,7 @@ class ProjectIdeasController < ApplicationController
       redirect '/project_ideas/new'
     end
     #if params claimed = true then add to show page
+    #show as claimed to all projects
     #elsif params claimed != true (unclaimed) then add to all project ideas
     #else flash[:errors] = "Something went wrong - Would you like to claim this project?"
     #redirect '/project_ideas/new'
@@ -75,12 +76,5 @@ class ProjectIdeasController < ApplicationController
     @project_idea = ProjectIdea.find(params[:id])
   end
 
-  def claimed_project
-
-  end
-
-  def unclaimed_project
-
-  end
 
 end
