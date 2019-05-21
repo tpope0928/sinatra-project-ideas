@@ -7,5 +7,13 @@ Edit a Project Idea
   <label for="content">Content:</label>
   <textarea name="content" style="width:auto; height:auto;"><%= @project_idea.content %></textarea>
   #unclaim project
+  #if project_idea.status != false
+    <#label for="claim">Unclaim this Idea?<#/label>
+    <#input type="checkbox" name="status" value="false">
+  #if project_idea.status != true
+  <#label for="claim">Claim this Idea?<#/label>
+  <#input type="checkbox" name="status" value="claimed">
+
+
   <input type="submit" name="" value="Edit Entry">
 </form>

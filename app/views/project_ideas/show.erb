@@ -6,7 +6,7 @@
 
 <p>created on <%= @project_idea.formatted_created_at %></p>
 
-#if project idea != claimed
+#if project idea.ststus != true
 #form class="" action="/project_ideas/<%= @project_idea.id %>" method="post">#
 #input type="submit" name="" value="claim this project">
 
