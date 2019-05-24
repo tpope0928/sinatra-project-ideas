@@ -1,7 +1,8 @@
 class ProjectIdeasController < ApplicationController
 
   get '/project_ideas' do
-    @project_idea = ProjectIdea.all
+    @project_idea = ProjectIdea.all.select { |idea| idea.status == false }
+
     erb :'project_ideas/index'
   end
 
@@ -29,7 +30,12 @@ class ProjectIdeasController < ApplicationController
 
   get '/project_ideas/:id' do
     set_project_idea
-    erb :'/project_ideas/show'
+    if set_project_idea.status != false
+      erb :'/project_ideas/show'
+    else
+      redirect :'/project_ideas'
+    end
+
   end
 
   get '/project_ideas/:id/edit' do
@@ -64,10 +70,11 @@ class ProjectIdeasController < ApplicationController
     end
   end
 
-  get '/project_ideas/show' do
+  post '/project_ideas/status' do
     redirect_if_not_logged_in
-    #code on show page needs to show claimed project
-    erb :'/project_ideas/show'
+    @project = set_project_idea
+    @project.status = !@project.status
+    redirect "/users/#{current_user.id}"
   end
 
   private
@@ -75,6 +82,5 @@ class ProjectIdeasController < ApplicationController
   def set_project_idea
     @project_idea = ProjectIdea.find(params[:id])
   end
-
 
 end

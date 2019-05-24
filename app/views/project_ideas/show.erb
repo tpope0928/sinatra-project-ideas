@@ -9,7 +9,10 @@
 #if project idea.ststus != true
 #form class="" action="/project_ideas/<%= @project_idea.id %>" method="post">#
 #input type="submit" name="" value="claim this project">
-
+<form action="/project_ideas/status" method="post">
+  <input id="hidden" type="hidden" name="id" value="<%= @project_idea.id %>">
+  <input type="submit" value="Claim">
+</form>
 
 <% if authorized_to_edit?(@project_idea) %>
   <a href="/project_ideas/<%= @project_idea.id %>/edit">Edit Idea</a>

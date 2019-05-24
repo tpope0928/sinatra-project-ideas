@@ -5,8 +5,9 @@ All Project Ideas
   <p><%= project_idea.content %></p>
   <p>By <%= project_idea.user.name %></p>
 
-  <# if project_idea.status = false #>
-  <label for="claim">Claim this Idea?</label>
-  <input type="button" name="claimed" value="Claim Project">
+  <form action="/project_ideas/status" method="post">
+    <input id="hidden" type="hidden" name="id" value="<%= project_idea.id %>">
+    <input type="submit" value="Claim">
+  </form>
   <br><br>
 <% end %>
