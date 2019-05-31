@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :project_ideas
+  has_one :claimed_project, :class_name => :ProjectIdea, :foreign_key => :claimed_user_id
 
 end
