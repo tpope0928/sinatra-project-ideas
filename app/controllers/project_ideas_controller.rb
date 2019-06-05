@@ -1,8 +1,8 @@
 class ProjectIdeasController < ApplicationController
 
   get '/project_ideas' do
-    @project_idea = ProjectIdea.all.select { |idea| idea.status == false }
-
+    @project_idea = ProjectIdea.all
+    #@project_idea = ProjectIdea.all.select { |idea| idea.status == false }
     erb :'project_ideas/index'
   end
 
@@ -21,11 +21,7 @@ class ProjectIdeasController < ApplicationController
       flash[:errors] = "Something went wrong - you must provide content for your idea."
       redirect '/project_ideas/new'
     end
-    #if params claimed = true then add to show page
-    #show as claimed to all projects
-    #elsif params claimed != true (unclaimed) then add to all project ideas
-    #else flash[:errors] = "Something went wrong - Would you like to claim this project?"
-    #redirect '/project_ideas/new'
+
   end
 
   get '/project_ideas/:id' do
